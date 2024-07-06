@@ -1,5 +1,3 @@
-HOME PAGE LANG TO - OKI NA YAN
-
 @extends('layouts.app')
 
 @section('title' , 'Petzone')
@@ -18,14 +16,14 @@ HOME PAGE LANG TO - OKI NA YAN
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="inner-content">	
+			<div class="inner-content">
 				<div class="product-list" data-aos="fade-up">
-					<div class="grid product-grid">			
+					<div class="grid product-grid">
 						@foreach ($discountedBooks as $book)
 							<figure class="product-style">
 								<img src="images/products/{{ $book->demo_url }}" alt="Books" class="product-item">
 								<a href="{{ route('shop.basket.add' , $book->id) }}"><button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button></a>
-								<figcaption>	
+								<figcaption>
 									<h3><a href="{{ route('shop.products.show' , $book->id ) }}">{{ $book->title }}</a></h3>
 									<p>{{ $book->author }}</p>
 									<div class="item-price">
@@ -35,11 +33,11 @@ HOME PAGE LANG TO - OKI NA YAN
 											<a href="{{ route('shop.basket.add' , $book->id)}}" class="increase">+</a>
 											<span class="quantity">{{ $basketAtViews->getQuantity($book->id) }}</span>
 											<a href="{{ route('shop.basket.remove' , $book->id )}}" class="decrease">-</a>
-										</div>	
-									@endif 	
+										</div>
+									@endif
 								</figcaption>
-							</figure>			
-						@endforeach	
+							</figure>
+						@endforeach
 					</div>
 				</div>
 			</div>
@@ -54,10 +52,11 @@ HOME PAGE LANG TO - OKI NA YAN
 		<h2 class="section-title divider">Inspirational Insight</h2>
 		<blockquote data-aos="fade-up">
 			<q>Animals are such agreeable friends—they ask no questions; they pass no criticisms.</q>
-			<div class="author-name">George Eliot</div>			
+			<div class="author-name">George Eliot</div>
 		</blockquote>
-	</div>		
+	</div>
 </section>
 <!-- quote of the day end -->
 
 @endsection
+

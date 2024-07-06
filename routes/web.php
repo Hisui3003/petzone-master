@@ -50,6 +50,10 @@ Route::get('dashboard', [AuthController::class, 'dashboard']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 
+// homepage infinity scroll
+Route::get('/', 'InfinityScrollController@index')->name('home');
+Route::get('/fetchDiscountedBooks', 'InfinityScrollController@fetchDiscountedBooks')->name('fetch.discounted.books');
+
 /** Book shop routes **/
 Route::prefix('')->group(function(){
     /* For main ones */
@@ -58,6 +62,7 @@ Route::prefix('')->group(function(){
     Route::prefix('/products')->group(function(){
         Route::get('' , [ShopProductController::class , 'index'])->name('shop.products.index');
         Route::get('/{product}/show' , [ShopProductController::class , 'show'])->name('shop.products.show');
+
     });
     /* For basket */
     Route::prefix('/basket')->group(function(){
@@ -158,3 +163,6 @@ Route::middleware(['web'])->group(function () {
 });
 
 
+// routes/web.php or routes/api.php
+
+// Route::get('/load-more-data', [YourController::class, 'loadMoreData'])->name('load.more.data');

@@ -54,7 +54,7 @@ class AuthController extends Controller
             if (Auth::attempt($request->only(["email", "password"]))) {
                 return response()->json([
                     "status" => true,
-                    "redirect" => url("")
+                    "redirect" => url("products")
                 ]);
             } else {
                 return response()->json([
