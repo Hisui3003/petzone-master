@@ -20,41 +20,6 @@ class ProductController extends Controller{
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    // public function index(Request $request){
-    //     // Fetch all products organized by category
-    //     $all = $this->organizeProductsByCategory($request);
-
-    //     // Return the view with the products
-    //     return view('frontend.shop', compact('all'));
-    // }
-
-    // public function index(Request $request){
-    //     // Fetch all products organized by category
-    //     $all = $this->organizeProductsByCategory($request);
-
-    //     // Paginate products
-    //     $perPage = 6;
-    //     $page = $request->query('page', 1); // Get current page from query string, default to 1
-    //     $paginated = [];
-
-    //     foreach ($all as $categoryName => $products) {
-    //         $currentPageItems = Collection::make($products)
-    //             ->slice(($page - 1) * $perPage, $perPage)
-    //             ->values();
-
-    //         $paginated[$categoryName] = new LengthAwarePaginator(
-    //             $currentPageItems,
-    //             count($products),
-    //             $perPage,
-    //             $page,
-    //             ['path' => LengthAwarePaginator::resolveCurrentPath()]
-    //         );
-    //     }
-
-    //     // Return the view with the paginated products
-    //     return view('frontend.shop', compact('paginated'));
-    // }
-
     public function index(Request $request){
         // Fetch all products organized by category
         $all = $this->organizeProductsByCategory($request);
