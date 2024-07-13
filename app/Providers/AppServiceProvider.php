@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider{
      * @return void
      */
     public function register(){
-        
+
     }
 
     /**
@@ -28,6 +28,8 @@ class AppServiceProvider extends ServiceProvider{
      * @return void
      */
     public function boot(){
+        \Algolia\AlgoliaSearch\Log\DebugLogger::enable();
+
         $this->app->bind(StorageInterface::class , function($app){
             return new SessionStorage('cart');
         });

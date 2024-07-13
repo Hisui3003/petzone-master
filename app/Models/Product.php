@@ -6,8 +6,11 @@ use App\Exceptions\QuantityExceededException;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+//search using algolia
+use Laravel\Scout\Searchable;
+
 class Product extends Model{
-    use HasFactory;
+    use HasFactory, Searchable;
 
     protected $guarded = [];
 
@@ -19,7 +22,7 @@ class Product extends Model{
     public function category(){
         return $this->belongsTo(Category::class);
     }
-    
+
     /**
      * NTON relationship between product and order
      *
@@ -28,13 +31,13 @@ class Product extends Model{
     public function orders(){
         return $this->belongsToMany(Order::class);
     }
-    
+
     /**
      * Apply changes on products price
      *
      * @param integer $price
      * @return int
-     */ 
+     */
     public function getPriceAttribute($price){
         if($this->percent_discount){
             $discountAmount = (int)($this->percent_discount / 100 * $price);
@@ -43,7 +46,7 @@ class Product extends Model{
 
         return $price;
     }
-    
+
     /**
      * Checking stock
      *
