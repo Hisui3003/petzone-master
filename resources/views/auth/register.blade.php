@@ -1,69 +1,15 @@
-{{-- @extends('layouts.app')
-
-@section('title' , 'Register')
-
-@section('content')
-<div class="login-area login-s2">
-    <div class="container">
-        <div class="login-box ptb--100">
-            <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="login-form-head">
-                    <h4>Register</h4>
-                </div>
-                <div class="login-form-body">
-                    <div class="form-gp">
-                        <input name="name" placeholder="Full Name" type="text">
-                        @error('name')
-                        <span class="valid-danger" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-gp">
-                        <input name="email" placeholder="Email address" type="email">
-                        @error('email')
-                        <span class="valid-danger" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-gp">
-                        <input name="password" placeholder="Password" type="password">
-                        @error('password')
-                        <span class="valid-danger" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-gp">
-                        <input name="password_confirmation" placeholder="Confirm Password" type="password">
-                    </div>
-                    <div class="form-gp">
-                        <input type="file" name="image_path" accept="image/*">
-                    </div>
-                    <div class="submit-btn-area">
-                        <button type="submit">Submit</button>
-                    </div>
-                    <div class="form-footer text-center mt-5">
-                        <p class="text-muted">Do have an account? <a href="{{ route('login') }}">Log in</a></p>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-@endsection --}}
-
 @extends('layout')
 
+@section('extra-css')
+<link rel="stylesheet" href="{{ asset('css/login-register.css') }} ">
+
 @section('content')
-<main class="login-form">
-    <div class="cotainer">
+<main class="login-form" style="background-image: url('images/bg-reg.png'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
+    <div class="huh">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Register</div>
+                <div class="login-container">
+                    {{-- <div class="card-header">Register</div> --}}
                     <div class="card-body">
 
                         <form action="{{ route('register.post') }}" method="POST" id="handleAjax">
@@ -72,20 +18,20 @@
 
                             <div id="errors-list"></div>
 
-                            <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
-                                <div class="col-md-6">
-                                    <input type="text" id="name" class="form-control" name="name" required autofocus>
+                            <div class="input_box form-group row">
+                                <label for="email_address" class="col-md-3 col-form-label text-md-right"></label>
+                                <div class="col-md-6 ">
+                                    <input type="text" id="name" class="form-control" name="name" placeholder="Name" required autofocus>
                                     @if ($errors->has('name'))
                                     <span class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone Number</label>
+                            <div class="input_box form-group row">
+                                <label for="email_address" class="col-md-3 col-form-label text-md-right"></label>
                                 <div class="col-md-6">
-                                    <input type="text" id="phone_number" class="form-control" name="phone_number" required
+                                    <input type="text" id="phone_number" class="form-control" name="phone_number" placeholder="Phone Number" required
                                         autofocus>
                                     @if ($errors->has('phone_number'))
                                     <span class="text-danger">{{ $errors->first('phone_number') }}</span>
@@ -93,10 +39,10 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
+                            <div class="input_box form-group row">
+                                <label for="email_address" class="col-md-3 col-form-label text-md-right"></label>
                                 <div class="col-md-6">
-                                    <input type="text" id="address" class="form-control" name="address" required
+                                    <input type="text" id="address" class="form-control" name="address" placeholder="Address" required
                                         autofocus>
                                     @if ($errors->has('address'))
                                     <span class="text-danger">{{ $errors->first('address') }}</span>
@@ -104,11 +50,10 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail
-                                    Address</label>
+                            <div class="input_box form-group row">
+                                <label for="email_address" class="col-md-3 col-form-label text-md-right"></label>
                                 <div class="col-md-6">
-                                    <input type="text" id="email_address" class="form-control" name="email" required
+                                    <input type="text" id="email_address" class="form-control" name="email" placeholder="E-mail" required
                                         autofocus>
                                     @if ($errors->has('email'))
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
@@ -116,43 +61,53 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                            <div class="input_box form-group row">
+                                <label for="email_address" class="col-md-3 col-form-label text-md-right"></label>
                                 <div class="col-md-6">
-                                    <input type="password" id="password" class="form-control" name="password">
+                                    <input type="password" id="password" class="form-control" name="password" placeholder="Password">
                                     @if ($errors->has('password'))
                                     <span class="text-danger">{{ $errors->first('password') }}</span>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="confirm_password" class="col-md-4 col-form-label text-md-right">Confirm
-                                    Password</label>
+                            <div class="input_box form-group row">
+                                <label for="email_address" class="col-md-3 col-form-label text-md-right"></label>
                                 <div class="col-md-6">
                                     <input type="password" id="confirm_password" class="form-control"
-                                        name="confirm_password" required>
+                                        name="confirm_password" placeholder="Confirm Password" required>
                                     @if ($errors->has('confirm_password'))
                                     <span class="text-danger">{{ $errors->first('confirm_password') }}</span>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
+                            {{-- <div class="form-group row">
+                                <div class="option_field col-md-4 offset-md-3">
                                     <div class="checkbox">
                                         <label>
                                             <input type="checkbox" name="remember"> Remember Me
                                         </label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="contain">
+                                <button type="submit" class="login-btn ">
                                     Register
                                 </button>
                             </div>
+
+                            <div class="reg">
+                                <p>
+                                    Already got an account?
+                                </p>
+
+                                <p>
+                                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                                </p>
+                            </div>
+
                         </form>
 
                     </div>
